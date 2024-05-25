@@ -1,0 +1,35 @@
+pipeline{
+    agent any
+    environment {
+        NAME = "Pradeep"
+    }
+    stages{
+        stage('build'){
+            steps{
+                echo "BUild started and completed"
+                
+            }
+            post{
+                success{
+                    mail to: "sachiniudarika.s@gmail.com",
+                    subject : "build status email",
+                    body : "build was sucessfull"
+                }
+            }
+        }
+        stage('Test'){
+            steps{
+                echo "Test started and completed"
+                
+            }
+        }
+        stage('Deploy'){
+            steps{
+                
+                echo "$NAME, deployment is done "
+                
+            }
+        }
+
+    }
+}
